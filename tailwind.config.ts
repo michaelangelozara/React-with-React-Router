@@ -6,6 +6,9 @@ export default {
     ],
     theme: {
         extend: {
+            width:{
+                "premium" : "100px"
+            }
         }
     },
     plugins: [],

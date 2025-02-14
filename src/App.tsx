@@ -5,6 +5,9 @@ import About from "./page/About"
 import RootLayout from "./layout/RootLayout"
 import ContactLayout from "./layout/ContactLayout"
 import ContactInfo from "./components/ContactInfo"
+import CountryLayout from "./layout/CountryLayout"
+import Countries, { countriesLoader } from "./page/Countries"
+import ParamPage, { paramPageLoader } from "./page/ParamPage"
 
 function App() {
 
@@ -17,6 +20,13 @@ function App() {
         <Route path="contact" element={<ContactLayout />} >
           <Route path="info" element={<ContactInfo />} />
         </Route>
+        <Route path="countries" element={<CountryLayout />}>
+          {/* by using this technique the countriesLoader will be loaded first 
+           before the Countries page renderes*/}
+          <Route index element={<Countries />} loader={countriesLoader} />
+        </Route>
+
+        <Route path="param/:id" element={<ParamPage />} loader={paramPageLoader} />
       </Route>
     )
   )
